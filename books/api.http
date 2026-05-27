@@ -1,0 +1,42 @@
+@booksUrl = http://localhost:8080
+@bookId = REEMPLAZA_CON_UUID_REAL
+
+### Listar todos los libros
+GET {{booksUrl}}/api/books
+
+### Buscar libros por título
+GET {{booksUrl}}/api/books?title=Clean Cod pdated
+
+### Buscar libro por ID
+GET {{booksUrl}}/api/books/2210b415-fef2-40ad-8df0-9653ccfd2685
+### Buscar únicamente por Autor
+GET {{booksUrl}}/api/books?author=Robert
+
+### Buscar únicamente por Categoría
+GET {{booksUrl}}/api/books?category=Programacion
+
+
+### Crear libro
+POST {{booksUrl}}/api/books
+Content-Type: application/json
+
+{
+  "title": "elpepe",
+  "author": "Robert C. Martin",
+  "category": "Progragghkmacion",
+  "isbn": "978-0112450000000894"
+}
+
+### Actualizar libro
+PUT {{booksUrl}}/api/books/2210b415-fef2-40ad-8df0-9653ccfd2685
+Content-Type: application/json
+
+{
+  "title": "sucio Cod pdated",
+  "author": "Robert C. Martin",
+  "category": "Programacion",
+  "isbn": "978-8432208195"
+}
+
+### Eliminar libro
+DELETE {{booksUrl}}/api/books/e6b6eb14-fbae-4690-a2db-56051c44d674

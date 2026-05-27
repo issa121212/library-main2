@@ -1,0 +1,42 @@
+@usersUrl = http://localhost:8082
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpZ25hY2lvIiwiaWF0IjoxNzc5OTExMTIxLCJleHAiOjE3Nzk5OTc1MjF9.GV3aQkmW4Ftsd6xdJEVXb4w_e_dF4C0i_bv7A79XanA
+POST {{usersUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "ignacio",
+  "password": "123456"
+}
+
+### Login usuario
+POST {{usersUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "ignacio",
+  "password": "123456"
+}
+
+### Validar token JWT
+GET {{usersUrl}}/api/auth/validate
+Authorization: Bearer {{token}}
+
+### Listar usuarios registrados
+GET {{usersUrl}}/api/users
+Authorization: Bearer {{token}}
+
+### Listar libros desde users
+GET {{usersUrl}}/api/users/books
+Authorization: Bearer {{token}}
+
+### Buscar libros desde users por título
+GET {{usersUrl}}/api/users/books?title=pdated
+Authorization: Bearer {{token}}
+
+### Buscar libros desde users por autor
+GET {{usersUrl}}/api/users/books?author=pert
+Authorization: Bearer {{token}}
+
+### Buscar libros desde users por categoría
+GET {{usersUrl}}/api/users/books?category=proramacion
+Authorization: Bearer {{token}}

@@ -1,0 +1,29 @@
+services:
+  postgresUsers:
+    image: postgres:16-alpine
+    container_name: users-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: users
+      POSTGRES_USER: users
+      POSTGRES_PASSWORD: users
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U users -d users" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  users:
+    build: .
+    ports:   # 👈 AQUÍ VA
+      - "8082:8082"
+    environment:
+      JWT_SECRET: mi_clave_super_secreta_123
+      JWT_EXPIRATION: 86400000
+
+volumes:
+  postgres_data:
